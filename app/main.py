@@ -4,13 +4,17 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 import requests
 import logging
+import pathlib
+import os
+
+Home = pathlib.Path(__name__).parent / "app"  # Get the path to the app directory
 
 # Set up logging
 logging.basicConfig(
     level=logging.INFO,  # Set the logging level (INFO, DEBUG, WARNING, ERROR, CRITICAL)
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",  # Log format
     handlers=[
-        logging.FileHandler("app.log"),  # Log to a file
+        logging.FileHandler(Home.parent / "app.log"),  # Log to a file
         logging.StreamHandler(),  # Log to the console
     ],
 )
@@ -20,10 +24,10 @@ logger = logging.getLogger(__name__)  # Create a logger instance
 app = FastAPI()
 
 # Mount static files (for CSS, JS, etc.)
-app.mount("/static", StaticFiles(directory="app/static"), name="static")
+app.mount("/static", StaticFiles(directory=Home/"static"), name="static")
 
 # Set up Jinja2 templates
-templates = Jinja2Templates(directory="app/templates")
+templates = Jinja2Templates(directory=Home/"templates")
 
 
 # Homepage
