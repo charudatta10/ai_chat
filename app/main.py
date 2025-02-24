@@ -34,7 +34,7 @@ templates = Jinja2Templates(directory=Home/"templates")
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
     logger.info("Rendering homepage")  # Log the homepage request
-    return templates.TemplateResponse("index.html", {"request": request})
+    return templates.TemplateResponse({"request": request}, "index.html")
 
 
 # Chat endpoint (accepts JSON)
