@@ -5,7 +5,6 @@ from fastapi.templating import Jinja2Templates
 import requests
 import logging
 import pathlib
-import os
 
 Home = pathlib.Path(__name__).parent / "app"  # Get the path to the app directory
 
