@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chat</title>
+    <meta name="description" content="Chat with our AI-powered assistant using the Qwen model." />
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.x.x/dist/tailwind.min.css" rel="stylesheet">
+    <!-- HTMX -->
+    <script src="https://unpkg.com/htmx.org"></script>
+    <!-- HTMX JSON extension -->
+    <script src="https://unpkg.com/htmx.org/dist/ext/json-enc.js"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+    <div class="chat-container bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+        <div id="messages" class="messages h-64 overflow-y-auto mb-4">
+            <!-- Messages will be dynamically inserted here -->
+        </div>
+        <form
+            hx-post="/chat"
+            hx-target="#messages"
+            hx-swap="beforeend"
+            hx-ext="json-enc"
+            class="flex"
+        >
+            <input
+                type="text"
+                name="message"
+                placeholder="Type a message..."
+                class="flex-1 p-2 border rounded-l-lg focus:outline-none"
+                required
+            />
+            <button type="submit" class="bg-blue-500 text-white p-2 rounded-r-lg hover:bg-blue-600">
+                Send
+            </button>
+        </form>
+    </div>
+
+    <!-- HTMX script to handle message submission -->
+    <script>
+        document.body.addEventListener("htmx:afterRequest", function (evt) {
+            if (evt.detail.successful) {
+                // Clear the input after successful submission
+                document.querySelector("input[name='message']").value = "";
+                // Scroll to the bottom of the messages
+                const messagesDiv = document.getElementById("messages");
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            }
+        });
+    </script>
+</body>
+</html>
