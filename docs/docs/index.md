@@ -9,6 +9,7 @@ This documentation provides an overview of the FastAPI application, its endpoint
   - [Introduction](#introduction)
   - [Directory Structure](#directory-structure)
   - [Installation](#installation)
+  - [Local LLM Setup](#local-llm-setup)
   - [Logging Setup](#logging-setup)
   - [Endpoints](#endpoints)
     - [Homepage](#homepage)
@@ -57,6 +58,17 @@ To install the required dependencies, run the following command:
 
 ```sh
 pip install -r requirements.txt
+```
+
+## Local LLM Setup
+
+>[!Important] 
+> An AI Chat application utilizing Ollama as its backend requires a running Ollama server instance. This server must be active and listening on port 11434 for the chatbot to function correctly. The application relies on this connection to access and utilize the language models provided by Ollama.
+ 
+use following command to run ollama server
+
+```pwsh
+ollama serve
 ```
 
 ## Logging Setup
