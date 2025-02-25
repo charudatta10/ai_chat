@@ -1,1 +1,12 @@
 site_name: My Docs
+markdown_extensions:
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.emoji  
+  - pymdownx.tasklist  
+  - pymdownx.tilde  
+  - pymdownx.magiclink  
+  - pymdownx.smartsymbols  
+  - pymdownx.highlight
+  - pymdownx.caret
+  - pymdownx.snippets

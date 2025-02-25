@@ -115,16 +115,16 @@
 <h2 id="introduction">Introduction</h2>
 <p>This FastAPI application demonstrates a simple web application with logging, static file serving, and template rendering. It includes endpoints for rendering a homepage and handling chat requests.</p>
 <h2 id="directory-structure">Directory Structure</h2>
-<pre><code class="language-sh">app/
-├── __init__.py
-├── main.py
-├── static/
-│   └── js/
-│       └── main.js
-├── templates/
-│   └── index.html
-└── __pycache__/
-    └── ...
+<div class="highlight"><pre><span></span><code>app/
+├──<span class="w"> </span>__init__.py
+├──<span class="w"> </span>main.py
+├──<span class="w"> </span>static/
+│<span class="w">   </span>└──<span class="w"> </span>js/
+│<span class="w">       </span>└──<span class="w"> </span>main.js
+├──<span class="w"> </span>templates/
+│<span class="w">   </span>└──<span class="w"> </span>index.html
+└──<span class="w"> </span>__pycache__/
+<span class="w">    </span>└──<span class="w"> </span>...
 .env
 .gitattributes
 .gitignore
@@ -136,43 +136,43 @@ requirements.txt
 run.py
 tasks.py
 docs/
-├── mkdocs.yml
-└── docs/
-    └── index.md
+├──<span class="w"> </span>mkdocs.yml
+└──<span class="w"> </span>docs/
+<span class="w">    </span>└──<span class="w"> </span>index.md
 tests/
 __pycache__/
-    └── ...
-</code></pre>
+<span class="w">    </span>└──<span class="w"> </span>...
+</code></pre></div>
 <h2 id="installation">Installation</h2>
 <p>To install the required dependencies, run the following command:</p>
-<pre><code class="language-sh">pip install -r requirements.txt
-</code></pre>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</code></pre></div>
 <h2 id="local-llm-setup">Local LLM Setup</h2>
 <blockquote>
 <p>[!Important]
 An AI Chat application utilizing Ollama as its backend requires a running Ollama server instance. This server must be active and listening on port 11434 for the chatbot to function correctly. The application relies on this connection to access and utilize the language models provided by Ollama.</p>
 </blockquote>
 <p>use following command to run ollama server</p>
-<pre><code class="language-pwsh">ollama serve
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">ollama</span> <span class="n">serve</span>
+</code></pre></div>
 <h2 id="logging-setup">Logging Setup</h2>
 <p>The application uses the <code>logging</code> module to set up logging to both a file and the console. The log configuration is defined as follows:</p>
-<pre><code class="language-python">import logging
-import pathlib
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pathlib</span>
 
-Home = pathlib.Path(__name__).parent / &quot;app&quot;
+<span class="n">Home</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;app&quot;</span>
 
-logging.basicConfig(
-    level=logging.INFO,
-    format=&quot;%(asctime)s - %(name)s - %(levelname)s - %(message)s&quot;,
-    handlers=[
-        logging.FileHandler(Home.parent / &quot;app.log&quot;),
-        logging.StreamHandler(),
-    ],
-)
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span>
+    <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+    <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%(asctime)s</span><span class="s2"> - </span><span class="si">%(name)s</span><span class="s2"> - </span><span class="si">%(levelname)s</span><span class="s2"> - </span><span class="si">%(message)s</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="n">handlers</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">FileHandler</span><span class="p">(</span><span class="n">Home</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;app.log&quot;</span><span class="p">),</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">(),</span>
+    <span class="p">],</span>
+<span class="p">)</span>
 
-logger = logging.getLogger(__name__)
-</code></pre>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+</code></pre></div>
 <h2 id="endpoints">Endpoints</h2>
 <h3 id="homepage">Homepage</h3>
 <ul>
@@ -181,11 +181,11 @@ logger = logging.getLogger(__name__)
 <li><strong>Response</strong>: HTMLResponse</li>
 <li><strong>Description</strong>: Renders the homepage using Jinja2 templates.</li>
 </ul>
-<pre><code class="language-python">@app.get(&quot;/&quot;, response_class=HTMLResponse)
-async def home(request: Request):
-    logger.info(&quot;Rendering homepage&quot;)
-    return templates.TemplateResponse(&quot;index.html&quot;, {&quot;request&quot;: request})
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">response_class</span><span class="o">=</span><span class="n">HTMLResponse</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">home</span><span class="p">(</span><span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">):</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Rendering homepage&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">templates</span><span class="o">.</span><span class="n">TemplateResponse</span><span class="p">(</span><span class="s2">&quot;index.html&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;request&quot;</span><span class="p">:</span> <span class="n">request</span><span class="p">})</span>
+</code></pre></div>
 <h3 id="chat-endpoint">Chat Endpoint</h3>
 <ul>
 <li><strong>URL</strong>: <code>/chat</code></li>
@@ -194,40 +194,40 @@ async def home(request: Request):
 <li><strong>Response</strong>: JSONResponse</li>
 <li><strong>Description</strong>: Handles chat requests by calling the Ollama API and returning the AI response.</li>
 </ul>
-<pre><code class="language-python">@app.post(&quot;/chat&quot;)
-async def chat(message: dict = Body(...)):
-    logger.info(&quot;Received a new chat request&quot;)
-    user_input = message.get(&quot;message&quot;)
-    if not user_input:
-        logger.warning(&quot;No message provided in the request&quot;)
-        return JSONResponse({&quot;error&quot;: &quot;Message is required&quot;}, status_code=400)
+<div class="highlight"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/chat&quot;</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">chat</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="n">Body</span><span class="p">(</span><span class="o">...</span><span class="p">)):</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Received a new chat request&quot;</span><span class="p">)</span>
+    <span class="n">user_input</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;message&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">user_input</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;No message provided in the request&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">JSONResponse</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Message is required&quot;</span><span class="p">},</span> <span class="n">status_code</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
 
-    logger.info(f&quot;User input: {user_input}&quot;)
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;User input: </span><span class="si">{</span><span class="n">user_input</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-    try:
-        logger.info(&quot;Calling Ollama API...&quot;)
-        response = requests.post(
-            &quot;http://localhost:11434/api/chat&quot;,
-            json={
-                &quot;model&quot;: &quot;qwen2.5:0.5b&quot;,
-                &quot;messages&quot;: [{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: user_input}],
-                &quot;stream&quot;: False,
-            },
-        )
-        response.raise_for_status()
-        logger.info(f&quot;Ollama API response: {response.text}&quot;)
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Calling Ollama API...&quot;</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+            <span class="s2">&quot;http://localhost:11434/api/chat&quot;</span><span class="p">,</span>
+            <span class="n">json</span><span class="o">=</span><span class="p">{</span>
+                <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;qwen2.5:0.5b&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;messages&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">user_input</span><span class="p">}],</span>
+                <span class="s2">&quot;stream&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">)</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ollama API response: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-        ai_response = response.json().get(&quot;message&quot;, &quot;AI: Sorry, I couldn't process that.&quot;)
-        logger.info(f&quot;AI response: {ai_response}&quot;)
-        return {&quot;message&quot;: ai_response}
-    except requests.exceptions.RequestException as e:
-        logger.error(f&quot;Ollama API request failed: {e}&quot;)
-        return JSONResponse({&quot;error&quot;: &quot;Failed to process the request&quot;}, status_code=500)
-</code></pre>
+        <span class="n">ai_response</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;message&quot;</span><span class="p">,</span> <span class="s2">&quot;AI: Sorry, I couldn&#39;t process that.&quot;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;AI response: </span><span class="si">{</span><span class="n">ai_response</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="n">ai_response</span><span class="p">}</span>
+    <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">RequestException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ollama API request failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">JSONResponse</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Failed to process the request&quot;</span><span class="p">},</span> <span class="n">status_code</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+</code></pre></div>
 <h2 id="running-the-application">Running the Application</h2>
 <p>To run the application, use the following command:</p>
-<pre><code class="language-sh">uvicorn app.main:app --port=8000
-</code></pre>
+<div class="highlight"><pre><span></span><code>uvicorn<span class="w"> </span>app.main:app<span class="w"> </span>--port<span class="o">=</span><span class="m">8000</span>
+</code></pre></div>
 <p>For further information or questions, please refer to the <a href="https://fastapi.tiangolo.com/">FastAPI documentation</a>.</p>
 <p>Feel free to reach out if you need any more help or have questions!</p></div>
             </div>
@@ -311,5 +311,5 @@ async def chat(message: dict = Body(...)):
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2025-02-25 06:15:11.185492+00:00
+Build Date UTC : 2025-02-25 06:20:12.184836+00:00
 -->
