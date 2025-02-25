@@ -71,6 +71,10 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+            <li class="nav-item" data-bs-level="2"><a href="#local-llm-setup" class="nav-link">Local LLM Setup</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
             <li class="nav-item" data-bs-level="2"><a href="#logging-setup" class="nav-link">Logging Setup</a>
               <ul class="nav flex-column">
               </ul>
@@ -99,6 +103,7 @@
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#directory-structure">Directory Structure</a></li>
 <li><a href="#installation">Installation</a></li>
+<li><a href="#local-llm-setup">Local LLM Setup</a></li>
 <li><a href="#logging-setup">Logging Setup</a></li>
 <li><a href="#endpoints">Endpoints</a><ul>
 <li><a href="#homepage">Homepage</a></li>
@@ -141,6 +146,14 @@ __pycache__/
 <h2 id="installation">Installation</h2>
 <p>To install the required dependencies, run the following command:</p>
 <pre><code class="language-sh">pip install -r requirements.txt
+</code></pre>
+<h2 id="local-llm-setup">Local LLM Setup</h2>
+<blockquote>
+<p>[!Important] 
+An AI Chat application utilizing Ollama as its backend requires a running Ollama server instance. This server must be active and listening on port 11434 for the chatbot to function correctly. The application relies on this connection to access and utilize the language models provided by Ollama.</p>
+</blockquote>
+<p>use following command to run ollama server</p>
+<pre><code class="language-pwsh">ollama serve
 </code></pre>
 <h2 id="logging-setup">Logging Setup</h2>
 <p>The application uses the <code>logging</code> module to set up logging to both a file and the console. The log configuration is defined as follows:</p>
@@ -298,5 +311,5 @@ async def chat(message: dict = Body(...)):
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2025-02-24 10:37:32.017255+00:00
+Build Date UTC : 2025-02-25 06:12:17.713948+00:00
 -->
