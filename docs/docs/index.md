@@ -62,9 +62,9 @@ pip install -r requirements.txt
 
 ## Local LLM Setup
 
->[!Important] 
+>[!Important]
 > An AI Chat application utilizing Ollama as its backend requires a running Ollama server instance. This server must be active and listening on port 11434 for the chatbot to function correctly. The application relies on this connection to access and utilize the language models provided by Ollama.
- 
+
 use following command to run ollama server
 
 ```pwsh
